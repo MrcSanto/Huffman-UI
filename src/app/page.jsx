@@ -3,7 +3,7 @@
 import { MultiFileDropzoneUsage } from "@/components/upload_front";
 import { useState } from "react";
 import { encode } from "@/lib/huffman_code.js";
-import { addLineBreaks } from "@/lib/utils";
+import CopyTextArea from "@/components/custom_text_area";
 
 
 const Page = () => {
@@ -24,11 +24,7 @@ const Page = () => {
       <MultiFileDropzoneUsage onUploadFile={processFile}/>
       {encoded && <div>
         <h3 className="h3 mt-6 text-center">Texto Codificado</h3>
-        <textarea 
-          className="w-full bg-gray-900 text-green-400 h-64 p-4 rounded whitespace-pre-wrap text-sm"
-          readOnly
-          value={encoded}
-          />
+        <CopyTextArea value={encoded}/>
       </div>}
     </div>
   );

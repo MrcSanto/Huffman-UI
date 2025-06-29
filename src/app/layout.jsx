@@ -2,6 +2,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import ZoomableImage from "@/components/custom_image_area";
 
 const jetbrains_mono = JetBrains_Mono({
   variable: "--font-jetbrains",
@@ -27,11 +28,7 @@ export default function RootLayout({ children }) {
 
           {/* Image section (65%) */}
           <div className="w-[65%] bg-primary flex items-center justify-center overflow-y-auto h-full">
-            <img
-              src="/next.svg"
-              alt="Ilustração"
-              className="max-w-[500px] max-h-[500px] w-auto h-auto object-contain mx-auto"
-            />
+            <ZoomableImage src="next.svg" alt="Ilustração" />
           </div>
         </div>
       </body>
