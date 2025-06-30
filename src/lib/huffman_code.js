@@ -1,5 +1,3 @@
-// import fs from 'fs';
-
 class HuffNode{
     constructor(freq, data, left, right){
         this.freq = freq;
@@ -71,7 +69,7 @@ function exportToDot(root, huffCodeMap){
     return dot;
 }
 
-export function encode(str) {
+export async function encodeAndExport(str) {
     let mapping = {}
     for(const char of str){
         mapping[char] = (mapping[char] || 0) + 1
@@ -83,18 +81,23 @@ export function encode(str) {
     setBinaryCode(root, "", charBinaryMapping);
 
     const dotContent = exportToDot(root, charBinaryMapping);
-    // fs.writeFileSync('tree.dot', dotContent);
-    // console.log("Arquivo criado com sucesso.\n")
 
-    // console.log("Codigos: ", charBinaryMapping);
-
-    //generate the binary coded string
     let encoded = "";
     for (const char of str){
         encoded += charBinaryMapping[char];
     }
 
-    return encoded;
+    // ordenando o mapa de frequencias, de forma decrescente
+    const sortedMapping = Object.fromEntries(
+        Object.entries(mapping).sort((a, b) => b[1] - a[1])
+    );
+
+    return {
+        encoded,
+        frequencyMap: sortedMapping,
+        binaryMap: charBinaryMapping,
+        dot: dotContent,
+    };
 }
 
 function setBinaryCode(node, path, map){

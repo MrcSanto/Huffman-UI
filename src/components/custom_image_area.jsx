@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 
-export default function ZoomableImage({ src, alt }) {
+export function ZoomableImage({ src, alt }) {
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -37,7 +37,7 @@ export default function ZoomableImage({ src, alt }) {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className="w-full h-full overflow-hidden cursor-grab relative bg-primary"
+      className="w-full h-full overflow-hidden cursor-grab relative bg-white"
     >
       <img
         src={src}

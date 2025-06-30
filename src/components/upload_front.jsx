@@ -39,6 +39,7 @@ export function MultiFileDropzoneUsage({ onUploadFile }) {
         console.error('Erro ao ler o arquivo:', err);
       }
 
+      console.log(res);
       return res;
     },
     [edgestore, onUploadFile]

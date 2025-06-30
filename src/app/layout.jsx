@@ -1,11 +1,11 @@
-import { JetBrains_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { EdgeStoreProvider } from "@/lib/edgestore";
-import ZoomableImage from "@/components/custom_image_area";
 
-const jetbrains_mono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+
+const geist_mono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ['400', '500', '700'],
   display: 'swap'
@@ -19,18 +19,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt">
-      <body className={`${jetbrains_mono.variable} antialiased`}>
-        <div className="flex min-h-screen h-screen"> {/* altura total da viewport */}
-          {/* Sidebar (35%) */}
-          <aside className="w-[35%] bg-secondary p-8 overflow-y-auto h-full">
-            <EdgeStoreProvider>{children}</EdgeStoreProvider>
-          </aside>
-
-          {/* Image section (65%) */}
-          <div className="w-[65%] bg-primary flex items-center justify-center overflow-y-auto h-full">
-            <ZoomableImage src="next.svg" alt="Ilustração" />
-          </div>
-        </div>
+      <body className={`${geist_mono.variable} antialiased`}>
+        <EdgeStoreProvider>{children}</EdgeStoreProvider>
       </body>
     </html>
   );
